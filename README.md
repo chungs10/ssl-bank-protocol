@@ -24,8 +24,8 @@ We performed a security assessment on a peer team's implementation of the same p
 *   **Report Writing:** Authored a formal security assessment report detailing the findings, their impact on the CIA triad, and potential mitigations.
 
 ## Project Documentation
-*   [**White Paper: Our Implementation**](./Raphael_Chung_SSL.pdf) - (You can include a cleaned-up version of your `ac088937...` doc)
-*   [**Black Hat Report: Peer Assessment**](./black-hat-Raphael-Chung.pdf) - (The `black-hat-Raphael-Chung.pdf` file is perfect for this)
+*   [**White Paper: Our Implementation**](./Raphael%20Chung%20SSL.pdf)
+*   [**Black Hat Report: Peer Assessment**](./black-hat-Raphael-Chung.pdf)
 
 ## Disclaimer
 This project uses **deprecated and custom-built cryptographic algorithms (S-DES, custom SHA-1)** for educational purposes only. These should never be used in production systems.
