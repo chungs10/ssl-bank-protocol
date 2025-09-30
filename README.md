@@ -66,6 +66,7 @@ My analysis contributions included:
 
 
 ## Project Structure
+```plaintext
 ssl-bank-protocol/
 ├── README.md # Project overview and documentation
 ├── bank_server.py # Main banking server implementation
@@ -75,7 +76,7 @@ ssl-bank-protocol/
 ├── White_Hat_SSL_Bank_Protocol.pdf # White hat implementation paper
 ├── Black_Hat_Cryptanalysis_Report.pdf # Black hat security assessment
 └── Assignment.txt # Project requirements and specifications
-
+```
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
