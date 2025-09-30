@@ -141,12 +141,50 @@ def decryption(ciphertext, subkey1, subkey2):
 
 def encrypt(plaintext, key):
     subkey1, subkey2 = generate_subkeys(key)
-    text = [format(ord(i), '08b') for i in plaintext]
-    ciphertext = [encryption(i, subkey1, subkey2) for i in text]
-    return ''.join(chr(int(c, 2)) for c in ciphertext)
+    
+    # Convert plaintext to binary strings
+    binary_blocks = []
+    for char in plaintext:
+        binary_char = format(ord(char), '08b')
+        binary_blocks.append(binary_char)
+    
+    # Encrypt each block
+    encrypted_blocks = []
+    for block in binary_blocks:
+        encrypted_bits = encryption(block, subkey1, subkey2)
+        # Convert list of bits to binary string
+        encrypted_binary = ''.join(str(bit) for bit in encrypted_bits)
+        encrypted_blocks.append(encrypted_binary)
+    
+    # Convert binary strings back to characters
+    ciphertext = ''
+    for binary in encrypted_blocks:
+        char_code = int(binary, 2)
+        ciphertext += chr(char_code)
+    
+    return ciphertext
 
 def decrypt(ciphertext, key):
     subkey1, subkey2 = generate_subkeys(key)
-    text = [format(ord(i), '08b') for i in ciphertext]
-    decrypted_text = [decryption(i, subkey1, subkey2) for i in text]
-    return ''.join(chr(int(c, 2)) for c in decrypted_text)
+    
+    # Convert ciphertext to binary strings
+    binary_blocks = []
+    for char in ciphertext:
+        binary_char = format(ord(char), '08b')
+        binary_blocks.append(binary_char)
+    
+    # Decrypt each block
+    decrypted_blocks = []
+    for block in binary_blocks:
+        decrypted_bits = decryption(block, subkey1, subkey2)
+        # Convert list of bits to binary string
+        decrypted_binary = ''.join(str(bit) for bit in decrypted_bits)
+        decrypted_blocks.append(decrypted_binary)
+    
+    # Convert binary strings back to text
+    plaintext = ''
+    for binary in decrypted_blocks:
+        char_code = int(binary, 2)
+        plaintext += chr(char_code)
+    
+    return plaintext

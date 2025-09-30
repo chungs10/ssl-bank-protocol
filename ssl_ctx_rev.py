@@ -1,7 +1,7 @@
 import socket
 import random
-
-import s_des
+import hashlib
+import crypto_utils
 
 def is_prime(n):
     """Check if a number is prime."""
@@ -45,19 +45,34 @@ def sha1(data):
     return hashlib.sha1(data).digest()
 
 def hmac(key, message):
-    block_size = 64  # Block size for SHA-256 is 64 bytes
+    # Handle different types of key input
+    if isinstance(key, int):
+        key = str(key)
+    if isinstance(key, str):
+        key = key.encode('utf-8')
+    
+    # Handle different types of message input  
+    if isinstance(message, int):
+        message = str(message)
+    if isinstance(message, str):
+        message = message.encode('utf-8')
+    
+    block_size = 64
+    
     if len(key) > block_size:
-        key = sha1(key).digest()
+        key = sha1(key)
+    
     if len(key) < block_size:
         key = key + b'\x00' * (block_size - len(key))
 
     o_key_pad = bytes((x ^ 0x5c) for x in key)
     i_key_pad = bytes((x ^ 0x36) for x in key)
 
-    inner_hash = sha1(i_key_pad + message).digest()
-    outer_hash = sha1(o_key_pad + inner_hash).hexdigest()
-
+    inner_hash = sha1(i_key_pad + message)
+    outer_hash = sha1(o_key_pad + inner_hash).hex()
+    
     return outer_hash
+
 
 def ssl_handshake_client(client_sock, HOST, PORT):
     client_sock.connect((HOST, PORT))
