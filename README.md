@@ -44,10 +44,10 @@ My analysis contributions included:
 
 ## Installation & Usage
 1. Clone the repository:
+```bash
+git clone https://github.com/chungs10/ssl-bank-protocol
+cd ssl-bank-protocol
 ```
-    git clone https://github.com/chungs10/ssl-bank-protocol
-    cd ssl-bank-protocol
- ```
 2. Install dependencies:
 
 
@@ -55,13 +55,13 @@ My analysis contributions included:
 
     
 3. Run the banking server:
-```
-    python bank_server.py
+```bash
+python bank_server.py
 ```
 
 4. In a separate terminal, run the client:
-```
-    python atm_client.py
+```bash
+python atm_client.py
 ```
 
 
